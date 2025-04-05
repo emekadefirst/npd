@@ -58,7 +58,7 @@ export default function PoliceLoginComponent() {
                                 Officer ID
                             </label>
                             <input
-                                type="number"
+                                type="text"
                                 id="username"
                                 name="username"
                                 value={formData.username}
