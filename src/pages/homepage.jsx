@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import toast from 'react-hot-toast';
 
 export default function PoliceLoginComponent() {
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     });
+    const navigate = useNavigate(); // Initialize navigate for redirection
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -17,7 +20,14 @@ export default function PoliceLoginComponent() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Login attempt:', formData);
-        alert('Login attempt processed. This would connect to an authentication system in a real application.');
+
+        // Simulate successful login
+        toast.success('Login successful! Redirecting to dashboard...');
+        
+        // Redirect to /dashboard after the toast message
+        setTimeout(() => {
+            navigate('/dashboard');
+        }, 2000); // Delay redirection for 2 seconds to allow the toast message to appear
     };
 
     return (
@@ -58,7 +68,7 @@ export default function PoliceLoginComponent() {
                                 Officer ID
                             </label>
                             <input
-                                type="text"
+                                type="number"
                                 id="username"
                                 name="username"
                                 value={formData.username}
